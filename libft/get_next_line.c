@@ -6,7 +6,7 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 15:44:50 by aimelda           #+#    #+#             */
-/*   Updated: 2019/10/26 22:00:45 by aimelda          ###   ########.fr       */
+/*   Updated: 2020/03/15 23:29:39 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ int				get_next_line(const int fd, char **line)
 	if ((!ret && **line != '\0') || ret == 1)
 		return (1);
 	free(*line);
+	*line = NULL;
 	if (!ret)
 		return (0);
 	ft_lstdel(&fd_list, del);

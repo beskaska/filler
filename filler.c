@@ -6,7 +6,7 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/14 20:33:52 by aimelda           #+#    #+#             */
-/*   Updated: 2020/03/14 22:08:28 by aimelda          ###   ########.fr       */
+/*   Updated: 2020/03/15 23:43:02 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 int		main()
 {
-	//parsing
-		//get_map
-			//get player number
-			//get_numbers_of_lines_and_columns;
-			//get_map
-		//get_token
+	t_map	*map;
+	t_token	*token;
+
+	if (!(map = get_map()) || !(token = get_token()))
+		return (0);
 	//return (placing_a_piece(get_map, get_token));
 }
