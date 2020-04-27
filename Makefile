@@ -6,7 +6,7 @@
 #    By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/02 15:19:28 by aimelda           #+#    #+#              #
-#    Updated: 2020/03/14 20:53:11 by aimelda          ###   ########.fr        #
+#    Updated: 2020/04/24 21:51:28 by aimelda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,11 @@ NAME	=	aimelda.filler
 
 HDR		=	filler.h
 
-SRC		=	filler.c		\
+SRC		=	main.c			\
+			filler.c		\
 			parsing.c		\
+			defining.c		\
+			freeing.c		\
 
 OBJ		=	$(addsuffix .o, $(basename $(SRC)))
 
