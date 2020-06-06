@@ -6,7 +6,7 @@
 #    By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 21:18:08 by aimelda           #+#    #+#              #
-#    Updated: 2020/02/08 16:43:34 by aimelda          ###   ########.fr        #
+#    Updated: 2020/06/05 22:34:14 by aimelda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,18 +81,18 @@ SRC		=	ft_memset.c			\
 			ft_sqrt.c			\
 			get_next_line.c		\
 
-OBJ		=	$(addsuffix .o, $(basename $(SRC)))
+OBJ		=	$(SRC:.c=.o)
 
-NEW_OBJ	=	$(addsuffix .o, $(basename $?))
-
-C_FLAGS	=	-Wall -Wextra -Werror
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(SRC)
-	gcc $(C_FLAGS) -I$(HDR) -c $?
-	ar rc $@ $(NEW_OBJ)
+$(NAME): $(OBJ)
+	ar rc $@ $?
 	ranlib $@
+
+$(OBJ): $(HDR)
 
 clean:
 	rm -rf $(OBJ)
@@ -101,3 +101,5 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

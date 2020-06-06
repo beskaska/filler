@@ -6,7 +6,7 @@
 #    By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/02 15:19:28 by aimelda           #+#    #+#              #
-#    Updated: 2020/04/24 21:51:28 by aimelda          ###   ########.fr        #
+#    Updated: 2020/06/06 22:47:10 by aimelda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,24 +20,28 @@ SRC		=	main.c			\
 			defining.c		\
 			freeing.c		\
 
-OBJ		=	$(addsuffix .o, $(basename $(SRC)))
+LIBS	=	libft.a
+LIBDIR	=	libft/
+LIBPATH	=	$(addsuffix $(LIBS), $(LIBDIR))
 
-NEW_OBJ	=	$(addsuffix .o, $(basename $?)
+CFLAGS	=	-Wall -Wextra -Werror
 
-C_FLAGS	=	-Wall -Wextra -Werror
+all: makelibs $(NAME)
 
-all: $(NAME)
+$(NAME): $(SRC) $(HDR) $(LIBPATH)
+	gcc $(CFLAGS) -o $@ $(SRC) -L $(LIBDIR) -lft
 
-$(NAME): $(SRC)
-	make -C libft/
-	gcc $(C_FLAGS) -o $@ $(SRC) -L libft/ -lft
+makelibs:
+	make -C $(LIBDIR)
 
 clean:
 	rm -rf $(OBJ)
-	make clean -C libft/
+	make clean -C $(LIBDIR)
 
 fclean: clean
 	rm -rf $(NAME)
-	make fclean -C libft/
+	rm -rf $(LIBPATH)
 
 re: fclean all
+
+.PHONY: all clean fclean re makelibs
